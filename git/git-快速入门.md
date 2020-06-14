@@ -7,5 +7,5 @@
 
 ### 1.1. Git文件存储
 
-Git 和其它版本控制系统（包括 Subversion 和近似工具）的主要差别在于 Git 对待数据的方法。 概念上来区分，其它大部分系统以文件变更列表的方式存储信息。 这类系统（CVS、Subversion、Perforce、Bazaar 等等）将它们保存的信息看作是一组基本文件和每个文件随时间逐步累积的差异。 ![git文件存储](images/git/git-delta-based.png.png)
+Git 和其它版本控制系统（包括 Subversion 和近似工具）的主要差别在于 Git 对待数据的方法。 概念上来区分，其它大部分系统以文件变更列表的方式存储信息。 这类系统（CVS、Subversion、Perforce、Bazaar 等等）将它们保存的信息看作是一组基本文件和每个文件随时间逐步累积的差异。 ![git文件存储](https://raw.githubusercontent.com/liruizhong/Linux-Notes/blob/master/images/git/git-delta-based.png)
 
