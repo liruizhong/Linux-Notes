@@ -29,8 +29,6 @@
     + [5.1 为Github配置ssh key](#51--github--ssh-key)
     + [5.2 在Github上建立仓库](#52--github-----)
 
-<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
-
 
 # Git 快速入门
 ---
