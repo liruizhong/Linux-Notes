@@ -1,3 +1,37 @@
+- [Git 快速入门](#git-----)
+  * [1. Git特性](#1-git--)
+    + [1.1  Git文件存储](#11--git----)
+    + [1.2  Git操作基本都是本地的](#12--git---------)
+    + [1.3  Git文件的三种状态](#13--git-------)
+  * [2. Git基本命令](#2-git----)
+    + [2.1 创建仓库](#21-----)
+    + [2.2 检出仓库](#22-----)
+    + [2.3 工作流](#23----)
+    + [2.4 添加和提交](#24------)
+    + [2.5 推送改动](#25-----)
+    + [2.6 分支介绍](#26-----)
+    + [2.7 更新与合并](#27------)
+    + [2.8 标签](#28---)
+    + [2.9 撤销本地改动](#29-------)
+    + [2.10 删除文件](#210-----)
+    + [2.11 添加远程库](#211------)
+    + [2.12 配置](#212---)
+  * [3. 分支管理](#3-----)
+    + [3.1 创建与合并分支](#31--------)
+    + [3.2 解决冲突](#32-----)
+    + [3.3 Bug 分支](#33-bug---)
+    + [3.4 Feature分支](#34-feature--)
+    + [3.5 多人协作](#35-----)
+  * [4. 标签管理](#4-----)
+    + [4.1 创建标签](#41-----)
+    + [4.2 操作标签](#42-----)
+  * [5. Github配置](#5-github--)
+    + [5.1 为Github配置ssh key](#51--github--ssh-key)
+    + [5.2 在Github上建立仓库](#52--github-----)
+
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+
+
 # Git 快速入门
 ---
 
@@ -359,7 +393,7 @@ stash@{0}: WIP on dev: f52c633 add merge
 - SourceTree 是 Windows 和Mac OS X 下免费的 Git  客户端，同时也是Subversion版本控制系统工具。支持创建、克隆、提交、push、pull 和合并等操作。
 
 
-### 4.1 为Github配置ssh key
+### 5.1 为Github配置ssh key
 
 在本地创建ssh密钥， 使用如下命令：
 
@@ -381,7 +415,7 @@ ssh -T gi@106.38.48.147
 
 如果是第一次的会提示是否continue，输入yes就会看到：`You've successfully authenticated, but GitHub does not provide shell access `， 这就表示已成功连上github。
 
-### 4.2 在Github上建立仓库
+### 5.2 在Github上建立仓库
 
 点击`+`在弹出的选择框中点击`New repository`，在Repository name中填入仓库名，点击`Create repository`确认：
 
