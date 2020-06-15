@@ -1,12 +1,12 @@
 ### 以下为 git 平时常用命令，以便忘记时快速查找使用
 
 #### 初始化本地git仓库（创建新仓库）
-```
+```shell
 git init
 ```
 
 #### 全局配置，配置用户名、邮箱
-```
+```bash
 git config --global user.name  "xxx"
 git config --global user.email "xxx@xxx.com"
 ```
