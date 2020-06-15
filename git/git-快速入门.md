@@ -9,7 +9,7 @@
 
 `git`相比`svn`可以很方便的在本地进行版本管理，如同在本地有一个版本管理服务器一样。你可以在合适的时候将本地版本提交到版本管理服务器。
 
-### 1.1. Git文件存储
+### 1.1  Git文件存储
 
 Git 和其它版本控制系统（包括 Subversion 和近似工具）的主要差别在于 Git 对待数据的方法。 概念上来区分，其它大部分系统以文件变更列表的方式存储信息。 这类系统（CVS、Subversion、Perforce、Bazaar 等等）将它们保存的信息看作是一组基本文件和每个文件随时间逐步累积的差异。 
 ![svn文件存储](https://git-scm.com/book/en/v2/images/deltas.png)
@@ -17,13 +17,13 @@ Git 和其它版本控制系统（包括 Subversion 和近似工具）的主要�
 Git 不按照以上方式对待或保存数据。 反之，Git 更像是把数据看作是对小型文件系统的一组快照。 每次你提交更新，或在 Git 中保存项目状态时，它主要对当时的全部文件制作一个快照并保存这个快照的索引。 为了高效，如果文件没有修改，Git 不再重新存储该文件，而是只保留一个链接指向之前存储的文件。 Git 对待数据更像是一个 **快照流**。
 ![git文件存储](https://git-scm.com/book/en/v2/images/snapshots.png)
 
-### 1.2. Git操作基本都是本地的
+### 1.2  Git操作基本都是本地的
 
 在 Git 中的绝大多数操作都只需要访问本地文件和资源，一般不需要来自网络上其它计算机的信息。 如果你习惯于所有操作都有网络延时开销的集中式版本控制系统，Git 在这方面会让你感到速度之神赐给了 Git 超凡的能量。 因为你在本地磁盘上就有项目的完整历史，所以大部分操作看起来瞬间完成。
 
 举个例子，要浏览项目的历史，Git 不需外连到服务器去获取历史，然后再显示出来——它只需直接从本地数据库中读取。 你能立即看到项目历史。 如果你想查看当前版本与一个月前的版本之间引入的修改，Git 会查找到一个月前的文件做一次本地的差异计算，而不是由远程服务器处理或从远程服务器拉回旧版本文件再来本地处理。
 
-### 1.3. Git文件的三种状态
+### 1.3  Git文件的三种状态
 
  Git 有三种状态，你的文件可能处于其中之一：
  已修改（`modified`）和已暂存（`staged`）、已提交（`committed`）。  已修改表示修改了文件，但还没保存到数据库中。 已暂存表示对一个已修改文件的当前版本做了标记，使之包含在下次提交的快照中。已提交表示数据已经安全的保存在本地数据库中。
@@ -118,7 +118,7 @@ master 为远程分支名。
 git remote add origin <server>
 ```
 
-### 2.6 分支
+### 2.6 分支介绍
 
 分支是用来将特性开发绝缘开来的。在你创建仓库的时候，*master* 是“默认的”分支。在其他分支上进行开发，完成后再将它们合并到主分支上。
 
@@ -260,8 +260,98 @@ git config --global user.email "your_email@youremail.com"
 ```
 
 ## 3. 分支管理
+### 3.1 创建与合并分支
+* 创建 `dev` 分支，然后切换到 `dev` 分支
+```
+$ git checkout -b dev
+Switched to a new branch 'dev'
+```
+* `git checkout`命令加上`-b`参数表示创建并切换，相当于以下两条命令：
+```
+$ git branch dev
+$ git checkout dev
+Switched to branch 'dev'
+```
+* 然后，用`git branch`命令查看当前分支：
+```
+$ git branch
+* dev
+  master
+```
+* 合并分支到到当前分支
+```
+$ git merge dev
+Updating d46f35e..b17d20e
+Fast-forward
+ readme.txt | 1 +
+ 1 file changed, 1 insertion(+)
+```
+### 3.2 解决冲突
+当Git无法自动合并分支时，就必须首先解决冲突。解决冲突后，再提交，合并完成。
+
+解决冲突就是把Git合并失败的文件手动编辑为我们希望的内容，再提交。
+
+用`git log --graph`命令可以看到分支合并图。
+
+[廖雪峰老师解决冲突介绍](https://www.liaoxuefeng.com/wiki/896043488029600/900004111093344)
+
+### 3.3 Bug 分支
+当线上遇到紧急 `bug` 需要修复，而自己正在开发新功能而且没有开发完当前无法提交，`git` 提供了一个 `stash` 功能，可以把当前的工作现场“存储”起来，等以后恢复现场后再继续工作
+```
+$ git stash
+Saved working directory and index state WIP on dev: f52c633 add merge
+```
+当修复完 bug ,如果回到原先的工作现场呢？用`git stash list`命令看看：
+```
+$ git stash list
+stash@{0}: WIP on dev: f52c633 add merge
+```
+
+工作现场还在，Git把stash内容存在某个地方了，但是需要恢复一下，有两个办法：
+
+一是用`git stash apply`恢复，但是恢复后，stash内容并不删除，你需要用`git stash drop`来删除；
+
+另一种方式是用`git stash pop`，恢复的同时把stash内容也删了
+
+在master分支上修复的bug，想要合并到当前dev分支，可以用`git cherry-pick <commit>`命令，把bug提交的修改“复制”到当前分支，避免重复劳动。
+
+[廖雪峰老师Bug分支介绍](https://www.liaoxuefeng.com/wiki/896043488029600/900388704535136)
+
+### 3.4 Feature分支
+开发一个新feature，最好新建一个分支；
+
+如果要丢弃一个没有被合并过的分支，可以通过`git branch -D <name>`强行删除。
+
+### 3.5 多人协作
+查看远程库信息，使用`git remote -v`；
+
+本地新建的分支如果不推送到远程，对其他人就是不可见的；
+
+从本地推送分支，使用`git push origin branch-name`，如果推送失败，先用`git pull`抓取远程的新提交；
+
+在本地创建和远程分支对应的分支，使用`git checkout -b branch-name origin/branch-name`，本地和远程分支的名称最好一致；
+
+建立本地分支和远程分支的关联，使用`git branch --set-upstream branch-name origin/branch-name`；
+
+从远程抓取分支，使用`git pull`，如果有冲突，要先处理冲突。
 
 ## 4. 标签管理
+### 4.1 创建标签
+命令`git tag <tagname>`用于新建一个标签，默认为`HEAD`，也可以指定一个commit id；
+
+命令`git tag -a <tagname> -m "blablabla..."`可以指定标签信息；
+
+命令`git tag`可以查看所有标签。
+
+### 4.2 操作标签
+命令`git push origin <tagname>`可以推送一个本地标签；
+
+命令`git push origin --tags`可以推送全部未推送过的本地标签；
+
+命令`git tag -d <tagname>`可以删除一个本地标签；
+
+命令`git push origin :refs/tags/<tagname>`可以删除一个远程标签。
+
 
 ## 5. Github配置
 
@@ -296,6 +386,14 @@ ssh -T gi@106.38.48.147
 点击`+`在弹出的选择框中点击`New repository`，在Repository name中填入仓库名，点击`Create repository`确认：
 
 ![建立仓库](https://www.liaoxuefeng.com/files/attachments/919021631860000/0)
+
+
+
+参考网站：
+[廖雪峰 git 教程 ](https://www.liaoxuefeng.com/wiki/896043488029600)
+[Pro Git Book](https://git-scm.com/book/zh/v2)
+
+
 
 
 
