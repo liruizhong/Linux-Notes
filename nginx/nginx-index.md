@@ -1,6 +1,6 @@
 ## nginx 启用目录索引, 显示文件列表
 
-![nginx](https://cdn.kelu.org/blog/tags/nginx.jpg)
+![nginx](https://github.com/liruizhong/Linux-Notes/images/nginx/nginx.jpg)
 
 在nginx中，如果特定目录中没有index.html 文件，则默认会返回 404 Not Found 的错误。
 
