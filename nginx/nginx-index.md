@@ -2,8 +2,8 @@
 
 ![nginx](https://cdn.kelu.org/blog/tags/nginx.jpg)
 
-在nginx中，如果特定目录中没有index.html 文件，则默认会返回 404 Not Found 的错误。<\br>
-但是，Nginx 自动索引模块提供了一种**自动生成列表**的方法，添加自动索引非常容易，<\br>
+在nginx中，如果特定目录中没有index.html 文件，则默认会返回 404 Not Found 的错误。
+但是，Nginx 自动索引模块提供了一种**自动生成列表**的方法，添加自动索引非常容易，
 使用 `autoindex on` 即可。
 ```
 server {
