@@ -13,8 +13,8 @@ Server: nginx/1.8.1 #nginx的软件版本信息
 Server: Tengine   #隐藏了版本信息
 隐藏了版本，让版本漏洞无法使用
 ```
-* 修改 nginx 源代码来隐藏 nginx 版本信息
->文件1 "nginx-1.8.1/src/core/nginx.h" 12行-23行
+### 修改 nginx 源代码来隐藏 nginx 版本信息
+#### 1、文件： "nginx-1.8.1/src/core/nginx.h" 12行-23行
 ```
 # 原配置文件
 [root@linuxidc tools]# sed -n '12,23p' nginx-1.8.1/src/core/nginx.h  
@@ -42,7 +42,7 @@ Server: Tengine   #隐藏了版本信息
 #define NGINX_VAR          "EWS"                #nginx修改为EWS
 #define NGX_OLDPID_EXT     ".oldbin" 
 ```
->文件2 "nginx-1.8.1/src/http/ngx_http_header_filter_module.c" 49行
+#### 2、文件： "nginx-1.8.1/src/http/ngx_http_header_filter_module.c" 49行
 ```
 # 源文件
 [root@linuxidc tools]# sed -n '49p' nginx-1.8.1/src/http/ngx_http_header_filter_module.c 
@@ -52,7 +52,7 @@ static char ngx_http_server_string[] = "Server: nginx" CRLF;  #将nginx修改为
 [root@linuxidc tools]# sed -n '49p' nginx-1.8.1/src/http/ngx_http_header_filter_module.c 
 static char ngx_http_server_string[] = "Server: EWS" CRLF;   #将nginx修改为了EWS
 ```
->文件3 "nginx-1.8.1/src/http/ngx_http_special_response.c" 29行
+#### 3、文件： "nginx-1.8.1/src/http/ngx_http_special_response.c" 29行
 ```
 # 源文件
 [root@linuxidc tools]# sed -n '21,31p' nginx-1.8.1/src/http/ngx_http_special_response.c
