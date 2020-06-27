@@ -3,18 +3,18 @@
 Ansible更加简洁的自动化运维工具，不需要在客户端上安装agent，基于Python开发。可以实现批量操作系统配置、批量程序的部署、批量运行命令。
 
 **特点：**
-(1)、no agents：不需要在被管控主机上安装任何客户端；
-(2)、no server：无服务器端，使用时直接运行命令即可；
-(3)、modules in any languages：基于模块工作，可使用任意语言开发模块；
-(4)、yaml，not code：使用yaml语言定制剧本playbook；
-(5)、ssh by default：基于SSH工作；
-(6)、strong multi-tier solution：可实现多级指挥。
+1. no agents：不需要在被管控主机上安装任何客户端；
+2. no server：无服务器端，使用时直接运行命令即可；
+3. modules in any languages：基于模块工作，可使用任意语言开发模块；
+4. yaml，not code：使用yaml语言定制剧本playbook；
+5. ssh by default：基于SSH工作；
+6. strong multi-tier solution：可实现多级指挥。
 
 **优点：**
-(1)、轻量级，无需在客户端安装agent，更新时，只需在操作机上进行一次更新即可；
-(2)、批量任务执行可以写成脚本，而且不用分发到远程就可以执行；
-(3)、使用python编写，维护更简单，ruby语法过于复杂；
-(4)、支持sudo。
+1. 轻量级，无需在客户端安装agent，更新时，只需在操作机上进行一次更新即可；
+2. 批量任务执行可以写成脚本，而且不用分发到远程就可以执行；
+3. 使用python编写，维护更简单，ruby语法过于复杂；
+4. 支持sudo。
 
 ### 二、安装准备
 #### 2.1、准备两台机器 Centos6.7_64，这两台机器都关闭 selinux，清空 iptables 规则并保存。
@@ -135,4 +135,4 @@ Connection to web10.gz.com closed.
 </br>
 </br>
 [文章来源]
-*  [90root工作室](https://www.90root.com/post/23.html)
+* [90root工作室](https://www.90root.com/post/23.html)
